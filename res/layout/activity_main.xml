@@ -1,0 +1,214 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+        
+    <RelativeLayout
+        android:id="@+id/InputView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/input_border" >
+       	
+	    <EditText
+	        android:id="@+id/transactionAmount"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_toRightOf="@+id/transactionAmountLabel"
+	        android:ems="10" />
+	
+	    <TextView
+	        android:id="@+id/transactionAmountLabel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/transactionAmount"
+	        android:layout_alignBottom="@+id/transactionAmount"
+	        android:layout_marginTop="50dp"
+	        android:text="Transaction:" />
+	
+	    <SeekBar
+	        android:id="@+id/percentageBar"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/transactionAmount"
+	        android:layout_marginTop="16dp"
+	        android:layout_toRightOf="@+id/transactionAmountLabel" />
+	
+	    <TextView
+	        android:id="@+id/percentageLabel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/transactionAmountLabel"
+	        android:layout_alignTop="@+id/percentageBar"
+	        android:text="Percentage:" />
+
+	    <TextView
+	        android:id="@+id/splitLabel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/percentageBar"
+	        android:text="Split:" />
+
+	    <ImageView
+	        android:id="@+id/personIcon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/splitLabel"
+	        android:layout_alignLeft="@+id/splitLabel"
+	        android:layout_alignTop="@+id/splitLabel"
+	        android:layout_toRightOf="@+id/splitLabel"
+	        android:maxHeight="20dp"
+	        android:maxWidth="20dp"
+	        android:src="@drawable/person" />
+
+	    <TextView
+	        android:id="@+id/splitCount"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/personIcon"
+	        android:layout_alignLeft="@+id/percentageBar"
+	        android:layout_alignTop="@+id/personIcon"
+	        android:layout_marginLeft="-40dp"
+	        android:text="TextView " />
+
+	    <Button
+	        android:id="@+id/removeSplit"
+	        style="?android:attr/buttonStyleSmall"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/splitCount"
+	        android:layout_alignBottom="@+id/splitCount"
+	        android:layout_toLeftOf="@+id/addSplit"
+	        android:minHeight="24dp"
+	        android:minWidth="24dp"
+	        android:text="-" />
+
+	    <Button
+	        android:id="@+id/addSplit"
+	        style="?android:attr/buttonStyleSmall"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/removeSplit"
+	        android:layout_alignBottom="@+id/removeSplit"
+	        android:layout_alignRight="@+id/percentageBar"
+	        android:layout_marginRight="16dp"
+	        android:minHeight="24dp"
+	        android:minWidth="24dp"
+	        android:text="+" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+        android:id="@+id/DetailedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/InputView"
+        android:layout_below="@+id/InputView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/border" >
+
+        <TextSwitcher
+            android:id="@+id/tipAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalAmountLabel"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tipAmountLabel" >
+
+        </TextSwitcher>
+
+        <TextSwitcher
+            android:id="@+id/totalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/individualTipAmount"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/totalAmountLabel" >
+
+	    </TextSwitcher>
+
+        <TextSwitcher
+            android:id="@+id/individualAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/IndividualAmountLabel" >
+
+        </TextSwitcher>
+
+        <TextSwitcher
+            android:id="@+id/percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tipAmount"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/percentLabel" >
+
+        </TextSwitcher>    
+        
+    <TextView
+        android:id="@+id/tipAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/totalAmountLabel"
+        android:layout_below="@+id/totalAmountLabel"
+        android:text="Total Tip: "
+        android:textColor="#F0F0F0" />
+
+    <TextView
+        android:id="@+id/IndividualAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Individual Amount:"
+        android:textColor="#F0F0F0" />
+
+    <TextView
+        android:id="@+id/totalAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/individualTipLabel"
+        android:layout_below="@+id/individualTipLabel"
+        android:text="Total Amount:"
+        android:textColor="#F0F0F0" />
+
+    <TextView
+        android:id="@+id/percentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tipAmountLabel"
+        android:layout_below="@+id/tipAmountLabel"
+        android:text="Tip Percentage:"
+        android:textColor="#F0F0F0" />
+
+    <TextView
+        android:id="@+id/individualTipLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/IndividualAmountLabel"
+        android:layout_below="@+id/IndividualAmountLabel"
+        android:text="Individual Tip:"
+        android:textColor="#F0F0F0" />
+
+    <TextSwitcher
+        android:id="@+id/individualTipAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/individualAmount"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/individualTipLabel" >
+    </TextSwitcher>
+    </RelativeLayout>
+   
+</RelativeLayout>
