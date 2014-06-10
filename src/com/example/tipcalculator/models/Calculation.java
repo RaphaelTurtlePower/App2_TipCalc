@@ -1,10 +1,7 @@
 package com.example.tipcalculator.models;
 
 public class Calculation {
-	public static final int DEFAULTPERCENTAGE  = 15;
-	public static final Double DEFAULTTRANSACTION = 10.0;
-	public static final int MAXSPLITCOUNT = 100;
-	public static final int MINSPLITCOUNT = 1;
+	
 	private Double transactionAmount;
 	private Integer percentage;
 	private Integer splitNumber;
@@ -13,7 +10,7 @@ public class Calculation {
 	private Double individualTotal;
 	private Double tipAmount;
 	private Double individualTipAmount;
-
+	
 	public static Calculation instance;
 	
 	public static Calculation getInstance(){
@@ -24,16 +21,10 @@ public class Calculation {
 	}
 	
 	private Calculation(){
-		this.transactionAmount = DEFAULTTRANSACTION;
-		this.percentage = DEFAULTPERCENTAGE;
-		this.splitNumber = MINSPLITCOUNT;
-		calculate();
-	}
-	
-	public Calculation(double transaction, int percent, int peopleCount){
-		this.transactionAmount = transaction;
-		this.percentage = percent;
-		this.splitNumber = peopleCount;
+		Settings s = Settings.getInstance();
+		this.transactionAmount = s.getDefaultTransaction();
+		this.percentage = s.getDefaultPercentage();
+		this.splitNumber = s.getMinSplitCount();
 		calculate();
 	}
 
@@ -60,15 +51,17 @@ public class Calculation {
 	}
 
 	public void incSplitNumber(){
+		Settings s = Settings.getInstance();
 		int incValue = this.splitNumber + 1;
-		if(incValue <= MAXSPLITCOUNT){
+		if(incValue <= s.getMaxSplitCount()){
 			setSplitNumber(incValue);
 		}
 	}
 	
 	public void decSplitNumber(){
+		Settings s = Settings.getInstance();
 		int decValue = this.splitNumber - 1;
-		if(decValue >= MINSPLITCOUNT){
+		if(decValue >= s.getMinSplitCount()){
 			setSplitNumber(decValue);
 		}
 	}
@@ -117,4 +110,6 @@ public class Calculation {
 	public void setIndividualTipAmount(Double individualTipAmount) {
 		this.individualTipAmount = individualTipAmount;
 	}
+	
+	
 }

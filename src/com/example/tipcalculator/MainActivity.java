@@ -4,12 +4,12 @@ import java.text.DecimalFormat;
 import java.util.Formatter;
 
 import com.example.tipcalculator.models.Calculation;
+import com.example.tipcalculator.models.Settings;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,12 +20,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.ViewSwitcher.ViewFactory;
 
 
 public class MainActivity extends Activity {
@@ -36,13 +34,19 @@ public class MainActivity extends Activity {
 	TextSwitcher individualTipAmount;
 	TextSwitcher percentage;
 	TextView splitCount;
-	
+	String fileString;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//on load, initialize Settings Object
+		Settings.SETTINGS_FILE = getFilesDir() + "settings.txt";	
+		Settings s = Settings.getInstance();
+		
+		//initialize Calculation Object
 		Calculation calc = Calculation.getInstance();
 		Typeface face = Typeface.createFromAsset(getAssets(), "Squares.otf");
+		
 		//initialize View elements
 		splitCount = (TextView) findViewById(R.id.splitCount);
 		splitCount.setTypeface(face);
@@ -195,8 +199,21 @@ public class MainActivity extends Activity {
 	    // Handle presses on the action bar items
 	    if(item.getItemId() == R.id.gear) {
 	          //handle setup activity here  openSettingsActivity();
+	    	editSettingsActivity();
 	    }
 	    return true;
 	}
 	
+	  public void editSettingsActivity(){
+	    	Intent editIntent = new Intent();
+	    	editIntent.setClass(this, EditSettingsActivity.class);
+	    	startActivityForResult(editIntent, 5);
+	  }
+	  
+	  @Override
+	  protected void onActivityResult(int requestCode, int resultCode, Intent data ){
+	    	if(requestCode == 5){
+	    		System.out.println("Successful return of activity.");
+	    	}
+	    }
 }
