@@ -31,7 +31,7 @@
 	        android:layout_alignBaseline="@+id/transactionAmount"
 	        android:layout_alignBottom="@+id/transactionAmount"
 	        android:layout_marginTop="50dp"
-	        android:text="Transaction:" />
+	        android:text="@string/transaction" />
 	
 	    <SeekBar
 	        android:id="@+id/percentageBar"
@@ -47,14 +47,14 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignRight="@+id/transactionAmountLabel"
 	        android:layout_alignTop="@+id/percentageBar"
-	        android:text="Percentage:" />
+	        android:text="@string/percentage" />
 
 	    <TextView
 	        android:id="@+id/splitLabel"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/percentageBar"
-	        android:text="Split:" />
+	        android:text="@string/split" />
 
 	    <ImageView
 	        android:id="@+id/personIcon"
@@ -76,7 +76,7 @@
 	        android:layout_alignLeft="@+id/percentageBar"
 	        android:layout_alignTop="@+id/personIcon"
 	        android:layout_marginLeft="-40dp"
-	        android:text="TextView " />
+	        android:text="@string/persons" />
 
 	    <Button
 	        android:id="@+id/removeSplit"
@@ -134,7 +134,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/individualTipAmount"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/totalAmountLabel" >
+            android:layout_toRightOf="@+id/totalAmountLabel" 
+            android:layout_alignTop="@+id/totalAmountLabel">
 
 	    </TextSwitcher>
 
@@ -143,7 +144,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/IndividualAmountLabel" >
+            android:layout_toRightOf="@+id/IndividualAmountLabel" 
+            android:layout_alignTop="@+id/IndividualAmountLabel">
 
         </TextSwitcher>
 
@@ -153,7 +155,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tipAmount"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/percentLabel" >
+            android:layout_toRightOf="@+id/percentLabel"
+            android:layout_alignTop="@+id/percentLabel" >
 
         </TextSwitcher>    
         
@@ -163,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/totalAmountLabel"
         android:layout_below="@+id/totalAmountLabel"
-        android:text="Total Tip: "
+        android:text="@string/total_tip"
         android:textColor="#F0F0F0" />
 
     <TextView
@@ -171,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="Individual Amount:"
+        android:text="@string/ind_amount"
         android:textColor="#F0F0F0" />
 
     <TextView
@@ -180,7 +183,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/individualTipLabel"
         android:layout_below="@+id/individualTipLabel"
-        android:text="Total Amount:"
+        android:text="@string/total_amount"
         android:textColor="#F0F0F0" />
 
     <TextView
@@ -189,7 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/tipAmountLabel"
         android:layout_below="@+id/tipAmountLabel"
-        android:text="Tip Percentage:"
+        android:text="@string/tip_percentage"
         android:textColor="#F0F0F0" />
 
     <TextView
@@ -198,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/IndividualAmountLabel"
         android:layout_below="@+id/IndividualAmountLabel"
-        android:text="Individual Tip:"
+        android:text="@string/ind_tip"
         android:textColor="#F0F0F0" />
 
     <TextSwitcher
@@ -207,7 +210,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/individualAmount"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/individualTipLabel" >
+        android:layout_toRightOf="@+id/individualTipLabel" 
+        android:layout_alignTop="@+id/individualTipLabel">
     </TextSwitcher>
     </RelativeLayout>
    

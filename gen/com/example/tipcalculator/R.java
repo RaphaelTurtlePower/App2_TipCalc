@@ -59,8 +59,16 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int hello_world=0x7f040001;
-        public static final int title_activity_edit_settings=0x7f040002;
+        public static final int ind_amount=0x7f040005;
+        public static final int ind_tip=0x7f040006;
+        public static final int percentage=0x7f040003;
+        public static final int persons=0x7f04000a;
+        public static final int split=0x7f040004;
+        public static final int tip_percentage=0x7f040009;
+        public static final int title_activity_edit_settings=0x7f040001;
+        public static final int total_amount=0x7f040007;
+        public static final int total_tip=0x7f040008;
+        public static final int transaction=0x7f040002;
     }
     public static final class style {
         /** 
