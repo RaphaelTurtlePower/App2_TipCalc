@@ -7,9 +7,12 @@ import com.example.tipcalculator.models.Calculation;
 import com.example.tipcalculator.models.Settings;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,12 +21,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 
 public class MainActivity extends Activity {
@@ -88,16 +93,49 @@ public class MainActivity extends Activity {
 			}
 			
 		});
+		transactionAmount.addTextChangedListener(new TextWatcher(){
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				//do nothing
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				 EditText edt = (EditText) findViewById(R.id.transactionAmount);
+					String text = edt.getText().toString();
+					Calculation calc = Calculation.getInstance();
+					try{
+						System.out.println("Attempting to parse the input text:" + text);
+						Double amount = Double.parseDouble(text);
+						calc.setTransactionAmount(amount);
+						updateDetailedView(calc);
+					}catch(NumberFormatException e){
+						System.out.println("Error calling parseDouble on:  " + text);
+					}
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				//do nothing
+			}
+			
+		});
 		transactionAmount.setOnKeyListener(new EditText.OnKeyListener() {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				EditText edt = (EditText) findViewById(R.id.transactionAmount);
-				String text = edt.getText().toString();
-				Double amount = Double.parseDouble(text);
-				Calculation calc = Calculation.getInstance();
-				calc.setTransactionAmount(amount);
-				updateDetailedView(calc);
-				return false;
+				 if ( (event.getAction() == KeyEvent.ACTION_DOWN  ) &&
+			             (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)   )
+			     {               
+			           // hide virtual keyboard
+			    	 System.out.println("Handle keyboard Enter code.");
+			           InputMethodManager imm = 
+			              (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+			           imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+			     }
+			   return false;
 			}
 	    });
 		

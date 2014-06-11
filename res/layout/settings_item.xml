@@ -17,6 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/settingsKey"
+        android:inputType="number"
+	    android:digits="0123456789."
+	    android:singleLine="true"
         android:ems="10" />
 
 </RelativeLayout>
